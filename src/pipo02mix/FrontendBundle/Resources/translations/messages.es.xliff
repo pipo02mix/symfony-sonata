@@ -1,0 +1,495 @@
+<?xml version="1.0"?> 
+    <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2"> 
+        <file source-language="en" datatype="plaintext" original="file.ext"> 
+            <body> 
+                <trans-unit id="breadcrumb.link_marca_list"> 
+                    <source>breadcrumb.link_marca_list</source> 
+                    <target>Lista de fabricantes</target> 
+                </trans-unit> 
+                <trans-unit id="breadcrumb.link_clase_list"> 
+                    <source>breadcrumb.link_clase_list</source> 
+                    <target>Lista de subfamilias</target> 
+                </trans-unit> 
+                <trans-unit id="breadcrumb.link_clase_padre_list"> 
+                    <source>breadcrumb.link_clase_padre_list</source> 
+                    <target>Lista de familias</target> 
+                </trans-unit>
+                <trans-unit id="list.label_descripcion"> 
+                    <source>list.label_descripcion</source> 
+                    <target>Descripción</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_nombre"> 
+                    <source>list.label_nombre</source> 
+                    <target>Nombre</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_imagen"> 
+                    <source>list.label_imagen</source> 
+                    <target>Imagen</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_web"> 
+                    <source>list.label_web</source> 
+                    <target>Página Web</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_viviendas"> 
+                    <source>list.label_viviendas</source> 
+                    <target>Viviendas</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_viviendas"> 
+                    <source>form.label_viviendas</source> 
+                    <target>Viviendas</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_precio"> 
+                    <source>form.label_precio</source> 
+                    <target>Precio</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_tipologia"> 
+                    <source>form.label_tipologia</source> 
+                    <target>Tipología</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_superficie_util"> 
+                    <source>form.label_superficie_util</source> 
+                    <target>m2 utiles</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_superficie_construida"> 
+                    <source>form.label_superficie_construida</source> 
+                    <target>m2</target>  
+                </trans-unit> 
+                <trans-unit id="form.label_superficie_jardin"> 
+                    <source>form.label_superficie_jardin</source> 
+                    <target>m2 jardin</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_superficie_terraza">
+                    <source>form.label_superficie_terraza</source> 
+                    <target>m2 terraza</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_parking">
+                    <source>form.label_parking</source> 
+                    <target>Parking</target> 
+                </trans-unit>
+                <trans-unit id="form.label_piscina">
+                    <source>form.label_piscina</source> 
+                    <target>Piscina</target> 
+                </trans-unit>
+                <trans-unit id="form.label_trastero">
+                    <source>form.label_trastero</source> 
+                    <target>Trastero</target> 
+                </trans-unit>  
+                <trans-unit id="form.label_num_dormitorios">
+                    <source>form.label_num_dormitorios</source> 
+                    <target>Habitaciones</target> 
+                </trans-unit>
+                <trans-unit id="form.label_num_banos">
+                    <source>form.label_num_banos</source> 
+                    <target>Baños</target> 
+                </trans-unit>  
+                <trans-unit id="list.label_orden"> 
+                    <source>list.label_orden</source> 
+                    <target>Orden</target> 
+                </trans-unit> 
+                <trans-unit id="list.label__action"> 
+                    <source>list.label__action</source> 
+                    <target>Acción</target> 
+                </trans-unit> 
+                <trans-unit id="link_action_create"> 
+                    <source>link_action_create</source> 
+                    <target>Nuevo</target> 
+                </trans-unit> 
+                <trans-unit id="link_action_list"> 
+                    <source>link_action_list</source> 
+                    <target>Listar</target> 
+                </trans-unit>
+                <trans-unit id="_title"> 
+                    <source>_title</source> 
+                    <target>Panel de control</target> 
+                </trans-unit>
+                <trans-unit id="list.label_servicio"> 
+                    <source>list.label_servicio</source> 
+                    <target>Servicio</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_seccion_list"> 
+                    <source>breadcrumb.link_seccion_list</source> 
+                    <target>Servicios: Lista de secciones</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_servicio_list"> 
+                    <source>breadcrumb.link_servicio_list</source> 
+                    <target>Servicios: Lista de categorias</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_instalacion_list"> 
+                    <source>breadcrumb.link_instalacion_list</source> 
+                    <target>Lista de instalaciones</target> 
+                </trans-unit>
+                <trans-unit id="list.label_categoria"> 
+                    <source>list.label_categoria</source> 
+                    <target>Categoria</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_categoria_instalacion_list"> 
+                    <source>breadcrumb.link_categoria_instalacion_list</source> 
+                    <target>Categorias</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_dias_cerrados_list"> 
+                    <source>breadcrumb.link_dias_cerrados_list</source> 
+                    <target>Lista de días cerrardos</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_dias_mediados_list"> 
+                    <source>breadcrumb.link_dias_mediados_list</source> 
+                    <target>Lista de días abiertos solo mañanas</target>
+                </trans-unit>
+                <trans-unit id="list.label_dia"> 
+                    <source>list.label_dia</source> 
+                    <target>Día</target>
+                </trans-unit>
+                <trans-unit id="list.label_mes"> 
+                    <source>list.label_mes</source> 
+                    <target>Mes</target>
+                </trans-unit>
+                <trans-unit id="list.label_ano"> 
+                    <source>list.label_ano</source> 
+                    <target>Año</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_noticia_list"> 
+                    <source>breadcrumb.link_noticia_list</source> 
+                    <target>Lista de noticias</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_user_list"> 
+                    <source>breadcrumb.link_user_list</source>
+                    <target>Lista de usuarios</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_user_create"> 
+                    <source>breadcrumb.link_user_create</source>
+                    <target>Nuevo</target>
+                </trans-unit>
+                <trans-unit id="form.label_nombre"> 
+                    <source>form.label_nombre</source>
+                    <target>Nombre</target>
+                </trans-unit>
+                <trans-unit id="form.label_username"> 
+                    <source>form.label_username</source>
+                    <target>Nombre de usuario</target>
+                </trans-unit>
+                <trans-unit id="form.label_email"> 
+                    <source>form.label_email</source>
+                    <target>Email</target>
+                </trans-unit>
+                <trans-unit id="form.label_password"> 
+                    <source>form.label_password</source>
+                    <target>Constraseña</target>
+                </trans-unit>
+                <trans-unit id="list.label_username"> 
+                    <source>list.label_username</source>
+                    <target>Nombre de usuario</target>
+                </trans-unit>
+                <trans-unit id="list.label_email"> 
+                    <source>list.label_email</source>
+                    <target>Email</target>
+                </trans-unit>
+                <trans-unit id="list.label_actividad"> 
+                    <source>list.label_actividad</source>
+                    <target>Actividad</target>
+                </trans-unit>
+                <trans-unit id="form.label_titulo"> 
+                    <source>form.label_titulo</source>
+                    <target>Título</target>
+                </trans-unit>
+                <trans-unit id="list.label_titulo"> 
+                    <source>list.label_titulo</source>
+                    <target>Título</target>
+                </trans-unit>
+                <trans-unit id="form.label_eslogan"> 
+                    <source>form.label_eslogan</source>
+                    <target>Eslogan</target>
+                </trans-unit>
+                <trans-unit id="form.label_orden"> 
+                    <source>form.label_orden</source>
+                    <target>Orden</target>
+                </trans-unit>
+                <trans-unit id="form.label_descripcion"> 
+                    <source>form.label_descripcion</source>
+                    <target>Descripción</target>
+                </trans-unit>
+                <trans-unit id="form.label_web"> 
+                    <source>form.label_web</source>
+                    <target>Página web</target>
+                </trans-unit>
+                <trans-unit id="form.label_imagen"> 
+                    <source>form.label_imagen</source>
+                    <target>Imagen</target>
+                </trans-unit>
+                <trans-unit id="form.label_file"> 
+                    <source>form.label_file</source>
+                    <target>Archivo</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_marca_create"> 
+                    <source>breadcrumb.link_marca_create</source>
+                    <target>Nuevo fabricante</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_marca_edit"> 
+                    <source>breadcrumb.link_marca_edit</source>
+                    <target>Editar fabricante</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_clase_padre_create"> 
+                    <source>breadcrumb.link_clase_padre_create</source>
+                    <target>Nueva familia</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_clase_padre_edit"> 
+                    <source>breadcrumb.link_clase_padre_edit</source>
+                    <target>Editar familia</target>
+                </trans-unit>
+                <trans-unit id="list.label_padre"> 
+                    <source>list.label_padre</source>
+                    <target>Familia Padre</target>
+                </trans-unit>
+                <trans-unit id="form.label_padre"> 
+                    <source>form.label_padre</source>
+                    <target>Familia Padre</target>
+                </trans-unit>
+                <trans-unit id="form.label_direccion"> 
+                    <source>form.label_direccion</source>
+                    <target>Direccion</target>
+                </trans-unit>
+                <trans-unit id="list.label_direccion"> 
+                    <source>list.label_direccion</source>
+                    <target>Direccion</target>
+                </trans-unit>
+                <trans-unit id="form.label_imagen_principal">
+                    <source>form.label_imagen_principal</source> 
+                    <target>Imagen principal</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_imagen_principal">
+                    <source>list.label_imagen_principal</source> 
+                    <target>Imagen principal</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_telefono"> 
+                    <source>form.label_telefono</source>
+                    <target>Telefono</target>
+                </trans-unit>
+                <trans-unit id="form.label_tags"> 
+                    <source>form.label_tags</source>
+                    <target>Etiquetas</target>
+                </trans-unit>
+                <trans-unit id="form.label_alquiler">
+                    <source>form.label_alquiler</source> 
+                    <target>Alquiler</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_alquiler">
+                    <source>list.label_alquiler</source> 
+                    <target>Alquiler</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_venta">
+                    <source>form.label_venta</source> 
+                    <target>Venta</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_venta">
+                    <source>list.label_venta</source> 
+                    <target>Venta</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_precio_venta">
+                    <source>form.label_precio_venta</source> 
+                    <target>Precio Venta</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_precio_venta">
+                    <source>list.label_precio_venta</source> 
+                    <target>Precio Venta</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_precio_alquiler">
+                    <source>form.label_precio_alquiler</source> 
+                    <target>Precio Alquiler</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_precio_alquiler">
+                    <source>list.label_precio_alquiler</source> 
+                    <target>Precio Alquiler</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_activo">
+                    <source>form.label_activo</source> 
+                    <target>Activo</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_activo">
+                    <source>list.label_activo</source> 
+                    <target>Activo</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_referencia">
+                    <source>form.label_referencia</source> 
+                    <target>Referencia</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_referencia">
+                    <source>list.label_referencia</source> 
+                    <target>Referencia</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_low_cost">
+                    <source>form.label_low_cost</source> 
+                    <target>LowCost</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_low_cost">
+                    <source>list.label_low_cost</source> 
+                    <target>LowCost</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_casa_ensueno">
+                    <source>form.label_casa_ensueno</source> 
+                    <target>Casa ensueño</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_casa_ensueno">
+                    <source>list.label_casa_ensueno</source> 
+                    <target>Casa ensueño</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_vistas_mar">
+                    <source>form.label_vistas_mar</source> 
+                    <target>Vistar mar</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_vistas_mar">
+                    <source>list.label_vistas_mar</source> 
+                    <target>Vistar mar</target> 
+                </trans-unit> 
+                <trans-unit id="form.label_zona">
+                    <source>form.label_zona</source> 
+                    <target>Zona</target> 
+                </trans-unit> 
+                <trans-unit id="list.label_zona">
+                    <source>list.label_zona</source> 
+                    <target>Zona</target> 
+                </trans-unit> 
+                <trans-unit id="breadcrumb.link_inmueble_list">
+                    <source>breadcrumb.link_inmueble_list</source> 
+                    <target>Lista de inmuebles</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_inmueble_edit">
+                    <source>breadcrumb.link_inmueble_edit</source> 
+                    <target>Edición de inmuebles</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_inmueble_new">
+                    <source>breadcrumb.link_inmueble_new</source> 
+                    <target>Nuevo inmueble</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_promocion_list">
+                    <source>breadcrumb.link_promocion_list</source> 
+                    <target>Lista de promociones</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_promocion_edit">
+                    <source>breadcrumb.link_promocion_edit</source> 
+                    <target>Edición de promociones</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_promocion_new">
+                    <source>breadcrumb.link_promocion_new</source> 
+                    <target>Nuevo promocione</target> 
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_s_a_t_list"> 
+                    <source>breadcrumb.link_s_a_t_list</source>
+                    <target>Listas de SATs</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_s_a_t_edit"> 
+                    <source>breadcrumb.link_s_a_t_edit</source>
+                    <target>Editar de SATs</target>
+                </trans-unit>
+                <trans-unit id="filter.label_clases"> 
+                    <source>filter.label_clases</source>
+                    <target>Filtrar por familias</target>
+                </trans-unit>
+                <trans-unit id="filter.label_marcas"> 
+                    <source>filter.label_marcas</source>
+                    <target>Filtrar por marcas</target>
+                </trans-unit>
+                <trans-unit id="is_equal_to"> 
+                    <source>is equal to</source>
+                    <target>es igual a</target>
+                </trans-unit>
+                <trans-unit id="is_not_equal_to"> 
+                    <source>is not equal to</source>
+                    <target>no es igual a</target>
+                </trans-unit>
+                <trans-unit id="create"> 
+                    <source>Create</source>
+                    <target>Crear</target>
+                </trans-unit>
+                <trans-unit id="form.label_dia"> 
+                    <source>form.label_dia</source>
+                    <target>Dia</target>
+                </trans-unit>
+                <trans-unit id="form.label_mes"> 
+                    <source>form.label_mes</source>
+                    <target>Mes</target>
+                </trans-unit>
+                <trans-unit id="form.label_ano"> 
+                    <source>form.label_ano</source>
+                    <target>Año</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_dias_especiales_list"> 
+                    <source>breadcrumb.link_dias_especiales_list</source>
+                    <target>Lista de dias especiales</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_dias_especiales_create"> 
+                    <source>breadcrumb.link_dias_especiales_create</source>
+                    <target>Crear nuevo día especial</target>
+                </trans-unit>
+                <trans-unit id="list.label_fecha"> 
+                    <source>list.label_fecha</source>
+                    <target>Fecha</target>
+                </trans-unit>
+                <trans-unit id="form.label_fecha"> 
+                    <source>form.label_fecha</source>
+                    <target>Fecha</target>
+                </trans-unit>
+                <trans-unit id="form.label_id_cliente"> 
+                    <source>form.label_id_cliente</source>
+                    <target>Código cliente del Programa</target>
+                </trans-unit>
+                <trans-unit id="list.label_id_cliente"> 
+                    <source>list.label_id_cliente</source>
+                    <target>Código cliente del Programa</target>
+                </trans-unit>
+                <trans-unit id="list.label_visible"> 
+                    <source>list.label_visible</source>
+                    <target>Visible web</target>
+                </trans-unit>
+                <trans-unit id="list.label_visible_clientes"> 
+                    <source>list.label_visible_clientes</source>
+                    <target>Visible Area Clientes</target>
+                </trans-unit>
+                <trans-unit id="list.label_actividad_promo_d_b"> 
+                    <source>list.label_actividad_promo_d_b</source>
+                    <target>Actividades afectadas</target>
+                </trans-unit>
+                <trans-unit id="breadcrumb.link_promo_d_b_list"> 
+                    <source>breadcrumb.link_promo_d_b_list</source>
+                    <target>Lista de promociones</target>
+                </trans-unit>
+                <trans-unit id="list.label_fecini"> 
+                    <source>list.label_fecini</source>
+                    <target>Fecha inicio</target>
+                </trans-unit>
+                <trans-unit id="list.label_fecfin"> 
+                    <source>list.label_fecfin</source>
+                    <target>Fecha fin</target>
+                </trans-unit>
+                <trans-unit id="list.label_telefono"> 
+                    <source>list.label_telefono</source>
+                    <target>Telefono</target>
+                </trans-unit>
+                <trans-unit id="list.label_imagenes"> 
+                    <source>list.label_imagenes</source>
+                    <target>Telefono</target>
+                </trans-unit>
+                <trans-unit id="form.label_ruta"> 
+                    <source>form.label_ruta</source>
+                    <target>Ruta del archivo</target>
+                </trans-unit>
+                <trans-unit id="form.label_visible"> 
+                    <source>form.label_visible</source>
+                    <target>Visible usuarios</target>
+                </trans-unit>
+                <trans-unit id="form.label_visible_clientes"> 
+                    <source>form.label_visible_clientes</source>
+                    <target>Visible clientes</target>
+                </trans-unit>
+                <trans-unit id="form.label_razon"> 
+                    <source>form.label_razon</source>
+                    <target>Razón promo</target>
+                </trans-unit>
+                <trans-unit id="form.label_fecini"> 
+                    <source>form.label_fecini</source>
+                    <target>Fecha inicio</target>
+                </trans-unit>
+                <trans-unit id="form.label_fecfin"> 
+                    <source>form.label_fecfin</source>
+                    <target>Fecha fin</target>
+                </trans-unit>
+            </body>
+    </file> 
+</xliff> 

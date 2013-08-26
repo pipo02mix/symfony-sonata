@@ -1,0 +1,54 @@
+
+<div class="row add-top">    
+
+    <div class="one-third-liquid">
+        <h5>{{ vivienda.nombre | trans | lower | capitalize }}</h5>
+        <strong>{{ vivienda.precio | number_format(0, '.', '.') }} €</strong>      
+        {% if vivienda.planos %}
+        <a href="/uploads/planos/{{ vivienda.planos }}" target="blank">Planos de la vivienda</a>
+        {% endif %}
+    </div>
+    
+    <div class="one-third-liquid">
+        <table>
+            <tr>
+                <th scope="row">Superficie útil</th>
+                <td>{{ vivienda.superficieUtil | trans }} m2</td>
+            </tr>
+            <tr>
+                <th scope="row">Tipo</th>
+                <td>{{ vivienda.tipologia | trans | lower | capitalize }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Habitaciones</th>
+                <td>{{ vivienda.numDormitorios | trans }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Baños</th>
+                <td>{{ vivienda.numBanos | trans }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="one-third-liquid">
+        <table>
+            <tr>
+                <th scope="row">Parking</th>
+                <td>{{ vivienda.parking | trans | lower | capitalize }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Trastero</th>
+                <td>{{ vivienda.trastero | trans | lower | capitalize }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Piscina</th>
+                <td>{{ vivienda.piscina | trans | lower | capitalize }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Terraza</th>
+                <td>{{ vivienda.superficieTerraza | trans }} m2</td>
+            </tr>
+        </table>
+    </div>    
+
+</div>

@@ -1,0 +1,47 @@
+home:
+    pattern:  /
+    defaults: { _controller: FrontendBundle:Default:index }
+
+list_inmuebles:
+    pattern:  /list/inmuebles
+    defaults: { _controller: FrontendBundle:Default:listInmuebles }
+    options:
+        expose: true
+
+view_inmuebles:
+    pattern:  /inmueble/{slug}
+    defaults: { _controller: FrontendBundle:Default:viewInmueble }
+        
+contacto_inmueble:
+    pattern: /contacto-inmueble/{slug}
+    defaults: { _controller: FrontendBundle:Default:contactoInmueble }
+    
+upload_imagenes:
+    pattern:  /admin/manage/images/{entity}/{id}
+    defaults: { _controller: FrontendBundle:Default:uploadImage, id: null }
+    options:
+        expose: true
+        
+delete_imagenes:
+    pattern:  /admin/delete/images/{entity}/{id}/{image}
+    defaults: { _controller: FrontendBundle:Default:deleteImage }
+
+importation:
+    pattern:  /admin/inmuebles/import
+    defaults: { _controller: FrontendBundle:Default:importInmuebles }    
+
+list_obra_nueva:
+    pattern: /obra-nueva
+    defaults: { _controller: FrontendBundle:Default:listObraNueva }
+
+view_obra_nueva:
+    pattern: /obra-nueva/{slug}
+    defaults: { _controller: FrontendBundle:Default:viewObraNueva }
+    
+ofrece_propiedad:
+    pattern: /ofrece-una-propiedad
+    defaults: { _controller: FrontendBundle:Default:viewOfrecePropiedad }
+
+static:
+    pattern: /{page}
+    defaults: { _controller: FrontendBundle:Default:static }

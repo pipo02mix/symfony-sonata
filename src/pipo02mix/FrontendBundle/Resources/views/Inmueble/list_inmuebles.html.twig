@@ -1,0 +1,666 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block header %}
+    <!-- Slider Skin One -->
+    <div class="bxskin-one add-bottom-2">
+
+            <ul class="bxslider">
+                    <li><img src="{{ asset('bundles/arrabassada/images/slider/banner1.jpg') }}" alt="//" title="<strong>Playa Arrabassada</strong><em>Disfruta de las puestas de sol</em>" /></li>
+                    <li><img src="{{ asset('bundles/arrabassada/images/slider/banner2.jpg') }}" alt="//" title="<strong>Vall de l'Arrabassada</strong><em>Vistas panorámicas al mar</em>" /></li>
+                    <li><img src="{{ asset('bundles/arrabassada/images/slider/banner6.jpg') }}" alt="//" title="<strong>Paseo marítimo playa Arrabassada</strong><em>Footing y calidad de vida</em>" /></li>
+                    <li><img src="{{ asset('bundles/arrabassada/images/slider/banner9.jpg') }}" alt="//" title="<strong>Paseo marítimo playa Arrabassada</strong><em>Disfruta del relax y la brisa marina</em>" /></li>
+            </ul>
+
+            <div id="bx-pager">
+                    <a data-slide-index="0" href="">Playa Arrabassada</a>
+                    <a data-slide-index="1" href="">Vall de l'Arrabassada</a>
+                    <a data-slide-index="2" href="">Paseo marítimo playa Arrabassada</a>
+                    <a data-slide-index="3" href="">Paseo marítimo playa Arrabassada</a>
+            </div>
+
+    </div>            
+    <!-- /.bxslider -->
+
+    <!-- Search box -->
+    <div class="top-form-holder black">
+            <form id="searchForm" action="{{ path('list_inmuebles') }}" method="POST" class="lighted search-bar">
+
+                    <label for="search" class="screen-reader-text">Piso alquiler, Ático con vistas al mar, ...</label>
+                    <input type="text" id="search" name="search" placeholder="Piso alquiler, Ático con vistas al mar, ..." class="big-top" />
+
+                    <button class="search big">Buscar</button>
+
+            </form>
+
+    </div>
+    <!-- /.search box -->
+{% endblock %}
+
+{% block content %}
+ 
+<!-- Content -->
+<div class="container">
+
+        <div class="row offset-by-one add-bottom-2">
+
+
+         <!-- Sidebar -->
+         {% include 'FrontendBundle:Inmueble:sidebar_filters.html.twig' %}
+         <!-- /Sidebar -->
+            
+        <!-- Main Column -->
+            <section class="list-inmuebles main eigth columns row">
+
+                    <h3 id="title-list_inmuebles" class="titling">Lista de inmuebles</h3>
+
+                    <ul id="list-order-panel">
+                        <li>
+                            <a href="#" class="active enlace-order-panel" data-id="created_at">Fecha</a>
+                        </li>
+                        <li>
+                            <a href="#" class="enlace-order-panel" data-id="precio">Precio</a>
+                        </li>
+                        <li>
+                            <a href="#" class="enlace-order-panel" data-id="num_visitas">Relevancia</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="nine columns">
+
+                            <!-- list inmuebles -->	
+                            <ul id="list-items" class="row two-per-row">
+                                {% for inmueble in inmuebles %}
+                                <li>
+                                        <a href="/inmueble/{{ inmueble.slug }}" class="enlace-seo" title="{{ inmueble.titulo }}">{{ inmueble.titulo }}</a>
+                                </li>       
+                              {% endfor %}
+                            </ul>
+                            <!-- /list inmuebles -->
+                            <div class="holder"></div>
+
+                    </div>
+                    <script>
+
+                        var APP = APP || {
+                                inmuebles: [],
+                                order: 'created_at', 
+                                active_inmuebles: [],
+                                active_filters: [],
+                                containerInmuebles: 'list-items'
+                            };
+
+                        //Initialize slider
+                        $(function(){
+                            $( "#slider_range" ).slider({
+                                range: true,
+                                min: 0,
+                                max: 1200000,
+                                step: 5000,
+                                values: [ 0, 1200000 ],
+                                slide: function( event, ui ) {
+                                    $( "#price-range" ).val( ui.values[ 0 ].formatMoney(0, ',', '.') + " - " + ui.values[ 1 ].formatMoney(0, ',', '.') + "€" );
+                                    $(APP).trigger("slider_price_venta", ui);
+                                }
+                            });
+                            $( "#price-range" ).val( $( "#slider_range" ).slider( "values", 0 ) + " € - "
+                                + $( "#slider_range" ).slider( "values", 1 ).formatMoney(0, ',', '.') + " €");
+
+                            $( "#slider_range2" ).slider({
+                                range: true,
+                                min: 0,
+                                max: 2500,
+                                step: 25,
+                                values: [ 0, 2500 ],
+                                slide: function( event, ui ) {
+                                    $( "#price-range2" ).val( ui.values[ 0 ].formatMoney(0, ',', '.') + "€" + " - " + ui.values[ 1 ].formatMoney(0, ',', '.') + "€" );
+                                    $(APP).trigger("slider_price_alquiler", ui);
+                                }
+                            });
+                            $( "#price-range2" ).val( $( "#slider_range2" ).slider( "values", 0 ) + " € - "
+                                + $( "#slider_range2" ).slider( "values", 1 ).formatMoney(0, ',', '.') + " €");
+                        });
+
+                        $(function(){
+                        
+                          $('#searchForm').ajaxForm(function(response) { 
+                              var inmuebles = JSON.parse(response)
+                              ,   busqueda = $('#search').val();
+                              
+                              if (busqueda.length > 0) {
+                                  $("#title-list_inmuebles").text("Busqueda '" + busqueda + "'");
+                              } else {
+                                  $("#title-list_inmuebles").text("Lista de inmuebles");
+                              }
+
+                              APP.populate(inmuebles);
+                              
+                              APP.paintInmuebles();
+
+                              $(APP).trigger('inmuebles-load');
+                          }); 
+
+                        //Populating list of inmuebles
+                          $.get(Routing.generate('list_inmuebles'), function(response){
+                              var inmuebles = JSON.parse(response);
+
+                              APP.populate(inmuebles);
+                              
+                              APP.init();
+                              
+                              APP.paintInmuebles();
+
+                              $(APP).trigger('inmuebles-load');
+                          });
+                          //Reorder inmuebles depend users selection
+                          $('.enlace-order-panel').bind('click tap', function(e){
+                                var order = $(this).attr('data-id');
+                                e.preventDefault();
+                                
+                                $('.enlace-order-panel.active').removeClass('active');
+                                $(this).addClass('active');
+                                
+                                if (order == 'precio') {
+                                    APP.order = 'precio_'+APP.getFilter('venta_alquiler').filtro;
+                                } else {
+                                    APP.order = order;
+                                }
+                                
+                                APP.paintInmuebles();
+                          });
+                          
+                         //registering events 
+                          $(APP).bind('inmuebles-load', function(){
+
+                              $('#checker_venta, #checker_alquiler').bind('click tap', function(e){
+                                    var filtro = $(this).val(),
+                                        contrario = $(this).val() === 'venta' ? 'alquiler' : 'venta',
+                                        venta = $('#checker_venta').attr('checked'),
+                                        alquiler = $('#checker_alquiler').attr('checked');
+                                    
+                                    if ($('#checker_'+filtro).attr('checked') || $('#checker_'+contrario).attr('checked')) {
+
+                                        venta ? $('#slider_venta').show() : $('#slider_venta').hide();
+                                        alquiler ? $('#slider_alquiler').show() : $('#slider_alquiler').hide();
+
+                                        APP.addFilter({
+                                            name: 'venta_alquiler',
+                                            venta: venta,
+                                            alquiler: alquiler,
+                                            valid: function(inmueble){                      
+                                                var validated  = false;
+
+                                                if (this.venta & this.alquiler) {
+                                                    validated = inmueble['venta'] || inmueble['alquiler'];
+                                                } else if (this.venta){
+                                                    validated = inmueble['venta'];
+                                                } else {
+                                                    validated = inmueble['alquiler'];
+                                                }
+
+                                                return inmueble.hasOwnProperty("venta") &&
+                                                       inmueble.hasOwnProperty("alquiler") &&  
+                                                       validated;
+                                            }
+                                        });
+
+                                        APP.paintInmuebles();
+                                    } else {
+                                        e.preventDefault();
+                                    }
+
+                              });                              
+                             
+                              $('#checker_baths').bind('click tap', function(e){
+                                    var num = parseInt(e.target.value, 10);
+                                    e.stopPropagation();
+
+                                    APP.addFilter({
+                                        name: 'num_banos',
+                                        aux: num,
+                                        valid: function(inmueble){
+                                            var condition = false;
+
+                                            if (this.aux >= 5) {
+                                                condition = inmueble[this.name] >= 5;
+                                            } else {
+                                                condition = inmueble[this.name] === this.aux;
+                                            }
+
+                                            return inmueble.hasOwnProperty(this.name) && condition;
+                                        }
+                                    });
+
+                                    APP.paintInmuebles();
+                              });
+
+                              $('#checker_rooms').bind('click tap', function(e){
+                                    var num = parseInt(e.target.value, 10);
+                                    e.stopPropagation();
+
+                                    APP.addFilter({
+                                        name: 'num_dormitorios',
+                                        aux: num,
+                                        valid: function(inmueble){
+                                            var numero = parseInt(inmueble[this.name], 10);
+
+                                            if (this.aux === 5) {
+                                                return  numero >= 5;
+                                            } else {
+                                                return numero === this.aux;
+                                            }
+
+                                            return false;
+                                        }
+                                    });
+
+                                    APP.paintInmuebles();
+                              });
+
+                              $('.cheker_zona').change('click tap', function(e){
+                                    var zona = $(this).val()
+                                    ,   zonas;
+                                    
+                                    zonas = APP.getFilter('zona').zonas;
+                                    
+                                    if (zonas[zona]) {
+                                        delete zonas[zona];
+                                    } else {
+                                        zonas[zona] = zona;
+                                    }
+                                    
+                                    APP.paintInmuebles();
+                              });
+                          
+                              $('#cheker_tipologia input[type="radio"]').change('click tap', function(e){
+                                    var tipo = $(this).val();
+                                    
+                                    APP.getFilter('tipo').tipo = tipo;
+                                    
+                                    APP.paintInmuebles();
+                              });
+
+                              $('#checker_casaensueno').bind('click tap', function(e){
+                                    var active = $(this).hasClass('active');
+                                    e.preventDefault();
+                                    
+                                    if (active) {
+                                        $(this).removeClass('active');
+                                        APP.removeFilter('casa_ensueno');
+                                    } else {
+                                        $(this).addClass('active');
+                                        APP.addFilter({
+                                            name: 'casa_ensueno',
+                                            valid: function(inmueble){
+                                                return inmueble[this.name] === true;
+                                            }
+                                        });
+                                    }
+                                    
+                                    APP.paintInmuebles();
+                              });
+
+                              $('#checker_lowcost').bind('click tap', function(e){
+                                    var active = $(this).hasClass('active');
+                                    e.preventDefault();
+                                    
+                                    if (active) {
+                                        $(this).removeClass('active');
+                                        APP.removeFilter('low_cost');
+                                    } else {
+                                        $(this).addClass('active');
+                                        APP.addFilter({
+                                            name: 'low_cost',
+                                            valid: function(inmueble){
+                                                return inmueble[this.name] === true;
+                                            }
+                                        });
+                                    }
+                                    
+                                    APP.paintInmuebles();
+                              });
+
+                              $(APP).bind('slider_price_venta', function(e, ui){
+                                    var max = parseInt(ui.values[1], 10)
+                                    ,   min = parseInt(ui.values[0], 10);
+
+                                    APP.addFilter({
+                                        name: 'slider_price_venta',
+                                        max: max,
+                                        min: min,
+                                        valid: function(inmueble){
+                                            var precio = parseInt(inmueble["precio_venta"], 10);
+
+                                            if (this.max >= precio && this.min <= precio) {
+                                                return true;
+                                            } 
+
+                                            return false;
+                                        }
+                                    });
+
+                                    APP.paintInmuebles();
+                              });
+
+                              $(APP).bind('slider_price_alquiler', function(e, ui){
+                                    var max = parseInt(ui.values[1], 10)
+                                    ,   min = parseInt(ui.values[0], 10);
+
+                                    APP.addFilter({
+                                        name: 'slider_price_alquiler',
+                                        max: max,
+                                        min: min,
+                                        valid: function(inmueble){
+                                            var precio = parseInt(inmueble["precio_alquiler"], 10);
+
+                                            if (this.max >= precio && this.min <= precio) {
+                                                return true;
+                                            } 
+
+                                            return false;
+                                        }
+                                    });
+
+                                    APP.paintInmuebles();
+                              });
+
+                          });
+                          
+                          APP.populate = function(inmuebles){
+                             APP.inmuebles = [];
+                             for (var i = 0, l = inmuebles.length; i < l; i++) {
+                                  APP.inmuebles[i] = APP.active_inmuebles[i] = inmuebles[i];
+                              }
+                              
+                          };
+                          APP.init = function(){
+                               //initilize filters                              
+                              APP.addFilter({
+                                    name: 'venta_alquiler',
+                                    venta: true,
+                                    alquiler: true,
+                                    valid: function(inmueble){                      
+                                        var validated  = false;
+
+                                        if (this.venta & this.alquiler) {
+                                            validated = inmueble['venta'] || inmueble['alquiler'];
+                                        } else if (this.venta){
+                                            validated = inmueble['venta'];
+                                        } else {
+                                            validated = inmueble['alquiler'];
+                                        }
+
+                                        return inmueble.hasOwnProperty("venta") &&
+                                               inmueble.hasOwnProperty("alquiler") &&  
+                                               validated;
+                                    }
+                                });
+                              APP.addFilter({
+                                name: 'zona',
+                                zonas: {},
+                                valid: function(inmueble){
+
+                                    if(Object.keys(this.zonas).length === 0)
+                                        return true;
+
+                                    for(var i in this.zonas) {
+                                        if (this.zonas.hasOwnProperty(i) && inmueble["zona"] === this.zonas[i]) {
+                                            return  true;
+                                        }
+                                    } 
+
+                                    return false;
+                                }
+                              });
+                              APP.addFilter({
+                                name: 'tipo',
+                                tipo: null,
+                                valid: function(inmueble){
+                                    
+                                    if(!this.tipo) {
+                                        return true;
+                                    } else if (this.tipo === '*') {
+                                        return inmueble["tipologia"].toUppercase() == 'LOCAL' || inmueble["tipologia"].toUppercase() == 'TRASTERO';
+                                    } else if (this.tipo === 'CASA') {
+                                        return inmueble["tipologia"].match(/CASA/i);
+                                    }
+                                    
+                                    return inmueble["tipologia"] == this.tipo;
+                                }
+                              });
+                          };
+                          
+                          //This function filter the content depend of active filters
+                          APP.filterInmuebles = function(){
+                              var filters = APP.active_filters
+                              , inmuebles = APP.inmuebles
+                              , filter_inmuebles = [];
+
+                              inmuebleLoop:
+                              for (var i = 0, l = inmuebles.length; i < l; i++) {
+                                  var show = true;
+                                  for (var j = 0, lf = filters.length; j < lf; j++) {
+                                      if (!filters[j].valid(inmuebles[i])) {                                    
+                                            continue inmuebleLoop;
+                                      }
+                                  }
+                                  filter_inmuebles.push(inmuebles[i]);
+                              }
+
+                              return filter_inmuebles;
+                          };
+
+                          //Elimnate a filter from collection
+                          APP.removeFilter = function(value){
+                              var filters = APP.active_filters;
+
+                              for (var i = 0, l = filters.length; i < l; i++) {
+                                  if ( filters[i].name == value ){
+                                      filters.splice(i, 1);
+                                      break;
+                                  }
+                              }
+
+                              return true;
+                          };
+                          //gets filter from collection
+                          APP.getFilter = function(name){
+                              var filters = APP.active_filters;
+
+                              for (var i = 0, l = filters.length; i < l; i++) {
+                                  if ( filters[i].name == name ){
+                                      return filters[i];
+                                  }
+                              }
+
+                              return false;
+                          };
+                          //Add filter to collection
+                          APP.addFilter = function(filter){
+                              var filters = APP.active_filters
+                              ,   exists = false;
+
+                              for (var i = 0, l = filters.length; i < l; i++) {
+                                  if ( filters[i].name == filter.name ){
+                                      filters[i] = filter;
+                                      exists = true;
+                                      break;
+                                  }
+                              }
+
+                              if (!exists) {
+                                  filters.push(filter);
+                              }
+
+                              return true;
+                          };
+                          
+                          //Reorder inmuebles depend order paramter
+                          APP.orderInmuebles = function(){
+                              var _change = false;
+                                  
+                              
+                              return function (){
+                                  
+                                  order = APP.order;
+                              
+                                  if (_change) {
+                                      APP.inmuebles.sort(function(a, b){
+                                          if (a[order] !== null && typeof a[order] == 'object' && a[order].date) {
+                                              return a[order].date < b[order].date;
+                                          }
+
+                                          return parseInt(a[order], 10) < parseInt(b[order], 10) ? 1 : -1;
+                                      });
+                                      _change = false;
+                                  } else {
+                                      APP.inmuebles.sort(function(a, b){
+                                          if (a[order] !== null && typeof a[order] == 'object' && a[order].date) {
+                                              return a[order].date > b[order].date;
+                                          }
+                                          
+                                          return parseInt(a[order], 10) > parseInt(b[order], 10) ? 1 : -1;
+                                      });
+                                      _change = true;
+                                  }
+                              }
+                          }();
+                          //Reset the list of inmuebles in the view
+                          APP.paintInmuebles = function(){
+                              var   source   = $("#inmueble-item").html()
+                              ,     template = Handlebars.compile(source)
+                              ,     html = []
+                              ,     inmuebles;  
+                              
+                              APP.orderInmuebles();
+                              inmuebles = APP.filterInmuebles();
+                              
+                              for (var i = 0, l = inmuebles.length; i < l; i++) {
+                                  html.push($('<li/>').addClass('item four columns omega').html(template(inmuebles[i])));
+                              }
+
+                              $('#' + APP.containerInmuebles).html(html);
+
+                              $(APP).trigger("filter-applied");
+                          };
+
+                          $(APP).bind('filter-applied', function(){
+                                $("div.holder").jPages({
+                                    containerID : APP.containerInmuebles,
+                                    perPage: {{ _NUM_INMUEBLES_PAGE }},
+                                    callback: function(){
+                                        $(".jp-next").bind('click tap', function(){
+                                            $('html, body').animate({
+                                                scrollTop: ($("#list-items").offset().top - 120)
+                                            }, 500);
+                                        });
+                                    }
+                                });
+                          });
+                          //Set image when the inmuebles is almost new
+                          Handlebars.registerHelper('blockEtiqueta', function(inmueble, options) {
+                                var today = new Date()
+                                , created = Date.parse(inmueble.created_at.date)
+                                ,   tags = ''
+                                , monthbefore
+                                , html = '';
+
+                                if (today.getMonth() == 0) {
+                                    monthbefore = new Date(today.getFullYear() - 1, 11, today.getDay());
+                                } else {
+                                    monthbefore = new Date(today.getFullYear(), today.getMonth() - 1, today.getDay());
+                                }
+
+                                if (created >= monthbefore) {
+                                    html = '<img src="/bundles/arrabassada/images/icons/new.png" alt="propiedad nueva" class="etiqueta-inmueble" />';
+                                } else if (inmueble.low_cost) {
+                                    html = '<img src="/bundles/arrabassada/images/icons/sold.png" alt="propiedad nueva" class="etiqueta-inmueble" />';
+                                } else if (inmueble.casa_ensueno) {
+                                html = '<img src="/bundles/arrabassada/images/icons/hot.png" alt="propiedad nueva" class="etiqueta-inmueble" />';
+                                }
+
+                                return html;
+                           }); 
+                           //Set the price depends of rent or sell
+                           Handlebars.registerHelper('blockPrecio', function(inmueble, options){
+                               var html = ''
+                               , alquiler = inmueble.precio_alquiler + 0
+                               , venta = inmueble.precio_venta + 0;
+                               
+                               if (inmueble.alquiler && inmueble.venta) {
+                                   html = 'Alquiler ' + parseFloat(inmueble.precio_alquiler).formatMoney(0, ',', '.') + '€   /   Venta ' + parseFloat(inmueble.precio_venta).formatMoney(0, ',', '.') + ' €';
+                               } else if (inmueble.alquiler) {
+                                   html = 'Alquiler ' + parseFloat(inmueble.precio_alquiler).formatMoney(0, ',', '.') + ' €';
+                               } else if (inmueble.venta > 0) {
+                                   html = 'Venta ' + parseFloat(inmueble.precio_venta).formatMoney(0, ',', '.') + ' €';
+                               }
+                               
+                               return html;
+                           });
+                        });
+                    </script>
+
+                    <script id="inmueble-item" type="text/x-handlebars-template">
+                    {% raw %}
+                            <article>
+                                    {{#blockEtiqueta this}}
+                                        {{ etiqueta }}
+                                    {{/blockEtiqueta}}
+                                    <figure class="mosaic-block">
+                                            <a href="/inmueble/{{ slug }}">Ver más</a>
+                                            
+                                            {{#if imagen_principal_default }}
+                                                <img src="{{ imagen_principal }}" alt="{{ titulo }}" />                                    
+                                            {{else}}
+                                                <img src="/uploads/inmueble_{{ number }}/{{ imagen_principal }}" alt="{{ titulo }}" />                                    
+                                            {{/if}}
+                                            
+                                    </figure>
+                                    <div class="description">
+                                            <img src="bundles/arrabassada/images/icons/gray-location.png" alt="ico-location" />
+                                            <span class="zona"> {{ zona }}</span>
+                                            <span class="referencia">REF {{ referencia }}</span>
+                                            
+                                            <a href="/inmueble/{{ slug }}" class="titulo">{{ truncate titulo 65 }}</a>
+                                    </div>
+                                    <span class="price">
+                                        {{#blockPrecio this}}
+                                            {{ precio }}
+                                        {{/blockPrecio}}
+                                    </span> 
+                            </article>
+                    {% endraw %}
+                    </script>
+            </section>
+            <!-- /Main Content  -->
+        </div>
+        <!-- /.row -->
+
+</div>
+<!-- /.container -->
+	<!-- B&W images filter -->
+	<script type="text/javascript">           
+            $(function(){
+                $('.bxslider').bxSlider({
+	  			pagerCustom:	'#bx-pager',
+	  		        mode:		'fade',
+                                speed:          3000,
+	  			captions:	true,
+	  			auto: 		true
+			});
+	
+		});
+	</script>
+    
+	<!-- B&W images filter -->
+	<script type="text/javascript">           
+        $(window).load(function(){
+                $('.bwWrapper').BlackAndWhite({
+                    hoverEffect : true, 
+                    webworkerPath : false,
+                    responsive:true,
+                    invertHoverEffect: false,
+                    speed: 400
+                });
+        });
+    </script>
+{% endblock %}	

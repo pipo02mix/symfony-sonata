@@ -1,0 +1,32 @@
+# -- Symfony2 -----------------------------------------
+app/bootstrap.php.cache
+app/bootstrap_cache.php.cache
+app/config/parameters.ini
+app/config/parameters.yml
+app/cache/*
+app/logs/*
+vendor/*
+web/bundles/*
+web/css/*
+web/js/*
+web/uploads/*
+
+# -- Composer -----------------------------------------
+composer.phar
+
+# -- PHPUnit ------------------------------------------
+app/phpunit.xml  
+
+# -- Editores -----------------------------------------# sublimetext
+/*.sublime-project
+*.sublime-workspace
+
+# -- Sistemas Operativos ------------------------------
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes

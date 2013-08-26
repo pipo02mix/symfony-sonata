@@ -1,0 +1,143 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block header %}
+    <header class="shadded title-bar add-bottom-2">
+
+            <div class="container">
+
+                    <h1 class="offset-by-one eleven columns remove-bottom">Ofrece una propiedad</h1>
+                    <div class="top-address three columns">
+                            <a href="tel:685139003" class="telephone">685-13-90-03</a>
+                            <p><a href="mailto:info@arrabassada.es">info@arrabassada.es</a></p>
+                    </div>
+                    
+            </div>
+            <!-- /.container -->
+
+    </header>
+{% endblock %}
+
+{% block content %}
+	
+<!-- Content -->
+<div class="container">
+
+        <div class="row offset-by-one add-bottom-2">
+
+                <!-- Main Column -->
+        <section class="fourteen columns">
+
+            <h4 class="titling add-bottom-2">Completa este formulario</h4>
+
+            <ol class="steps add-bottom-2">
+                    <li class="step-1"><a id="marcador-paso1" class="active" href="#paso1">1</a></li>
+                    <li class="step-2"><a id="marcador-paso2" href="#paso2">2</a></li>
+                    <li class="step-3"><a id="marcador-paso3" href="#paso3">3</a></li>
+            </ol>
+
+            <div class="lighted step-box">
+
+                  <h5 class="small-title person-icon">Información personal</h5>
+
+                  <form id="form" action="post" action="{{ path('ofrece_propiedad') }}">
+                    <div class="form-slider">
+                    <div class="form-slider-inner">
+                        <div id="paso1" class="paso">
+                            <ul class="row">
+                                    <li class="one-third-liquid">
+                                            <label for="name" class="screen-reader-text">Nombre</label>
+                                            <input type="text" placeholder="Nombre" class="full" required id="name" />
+                                    </li>
+                                    <li class="one-third-liquid">	
+                                            <label for="email" class="screen-reader-text">E-mail</label>
+                                            <input type="email" placeholder="Email" class="full" required id="email" />
+                                    </li>
+                                    <li class="one-third-liquid">	
+                                            <label for="telephone" class="screen-reader-text">Teléfono</label>
+                                            <input type="text" placeholder="Teléfono" class="full" required id="telephone" />
+                                    </li>
+                                    <li class="right-button one-third-liquid">	
+                                            <input id="botonpaso1" type="button" value="Siguiente paso" class="arrowed big button" />
+                                    </li>
+                            </ul>
+                        </div>
+                        <div id="paso2" class="paso">
+                            <ul class="row">
+                                <li class="one-third-liquid">
+                                        <label for="property" class="screen-reader-text">Tipo</label>
+                                        <input type="text" placeholder="Piso, casa, solar" class="full" required id="property" />
+                                </li>
+                                <li class="one-third-liquid">
+                                        <div>
+                                                <label for="operation" class="screen-reader-text">Operación</label>
+                                                <select id="operation" class="select" title="Operation type">
+                                                        <option value="alquiler">Alquiler</option>
+                                                        <option value="venta">Venta</option>
+                                                </select>
+                                        </div>
+                                </li>
+                                <li class="one-third-liquid">
+                                        <label for="beds" class="screen-reader-text">Habitaciones</label>
+                                        <input type="text" placeholder="Habitaciones" class="full" required id="beds" />
+                                </li>
+                                <li class="one-third-liquid">	
+                                        <label for="baths" class="screen-reader-text">Baños</label>
+                                        <input type="text" placeholder="Baños" class="full" required id="baths" />
+                                </li>
+                                <li class="one-third-liquid">
+                                        <label for="meters" class="screen-reader-text">Metros cuadrados</label>
+                                        <input type="text" placeholder="Metros cuadrados" class="full" required id="meters" />
+                                </li>
+                                <li class="one-third-liquid">	
+                                        <label for="prop-address" class="screen-reader-text">Dirección</label>
+                                        <input type="text" placeholder="Disrección" class="full" required id="prop-address" />
+                                <li class="right-button one-third-liquid">		
+                                        <input id="botonpaso2" type="button" value="Siguiente paso" class="arrowed big button" />
+                                </li>
+                        </ul>                
+                    </div>
+                    <div id="paso3" class="paso">
+                        			
+                        <li class="ten columns alpha">
+                                <label for="message" class="screen-reader-text">Observaciones</label>
+                                <textarea id="message" cols="50" rows="10" class="full"></textarea>
+                        </li>	
+
+                        <div class="one-third-liquid right-button">
+                                <input type="submit" value="Enviar propiedad" class="big button" />
+                        </div>
+                    </div>
+                  </div>    
+                  </div>    
+                </form>
+                <script type="text/javascript">
+                    $(function(){
+
+                        var width_form = $("#form").width();
+
+                        $(".paso").width(width_form);
+
+                        $("#botonpaso1").bind("click tap", function(){
+                            $(".form-slider-inner").animate({"left": "-="+width_form}, "slow");
+                            $("#marcador-paso1").removeClass("active");
+                            $("#marcador-paso2").addClass("active");
+                        });
+                        $("#botonpaso2").bind("click tap", function(){
+                            $(".form-slider-inner").animate({"left": "-="+width_form}, "slow");
+                            $("#marcador-paso2").removeClass("active");
+                            $("#marcador-paso3").addClass("active");
+                        });
+                    });
+                </script>
+            </div>
+
+        </section>
+                <!-- /Main Content  -->
+
+        </div>
+        <!-- /.row -->
+
+</div>
+<!-- /.container -->
+	
+{% endblock %}	

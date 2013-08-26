@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Arrabassada Inmobiliaria</title>
+	<meta name="description" content="Venta y alquiler de pisos en Tarragona, casas y promociones de obra nueva en Arrabassada Inmobiliaria de Tarragona.">
+	<meta name="author" content="Tiatere.es">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/base.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/skeleton.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/layout.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/colors/yellow.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/jquery.ui.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/jquery.bxslider.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/jPages.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/prettyPhoto.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/arrabassada/css/style.css') }}" />
+          
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js') }}"></script>
+	<![endif]-->
+
+	<!-- JS
+  ================================================== -->	
+ 
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/modernizr.custom.17475.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/router.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/fos_js_routes.js') }}"></script>
+        
+    
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{{ asset('bundles/arrabassada/images/icons/favicon.ico') }}">
+	<link rel="apple-touch-icon" href="{{ asset('bundles/arrabassada/images/icons/apple-touch-icon.png') }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('bundles/arrabassada/images/icons/apple-touch-icon-72x72.png') }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('bundles/arrabassada/images/icons/apple-touch-icon-114x114.png') }}">
+
+</head>
+<body>
+    	
+	<!-- Header -->
+	<div class="header">
+		
+		<header class="container">
+			
+			<div class="row offset-by-one remove-bottom">
+
+				<!-- Brand -->
+				<h1 id="brand" class="four columns">
+                                    <a href="{{ path('home') }}">
+                                        <img id="imagen-logo" src="{{ asset('bundles/arrabassada/images/logoArrabassada.png') }}" alt="Arrabasadda Inmobiliaria" />
+                                    </a>
+                                </h1>
+		
+				<!-- Main nav -->
+				<nav class="ten columns">
+				
+					<ul id="menu" class="nav">
+						<li><a href="{{ path('home') }}">Inmuebles</a></li>
+						<li><a href="{{ path('list_obra_nueva') }}">Obra nueva</a></li>
+						<li><a href="{{ path('static', { 'page': 'servicios' }) }}">Servicios</a></li>
+						<li><a href="{{ path('ofrece_propiedad') }}">Ofrece una propiedad</a></li>
+						<li><a href="{{ path('static', { 'page': 'contacto' }) }}">Contacto</a></li>
+					</ul>
+				
+				</nav>
+				<!-- /.Main nav -->
+			
+			</div>
+		
+		</header>
+		
+	</div>
+	
+        
+        {% block header %}
+            <header class="shadded title-bar add-bottom-2">
+
+                    <div class="container">
+
+                            <h1 class="offset-by-one eleven columns remove-bottom">Arrabassada Inmobiliaria</h1>
+                            <div class="top-address three columns">
+                                    <a href="tel:977290102" class="telephone">977.29.01.02</a>
+                                    <p><a href="mailto:info@arrabassada.es">info@arrabassada.es</a></p>
+                            </div>
+
+                    </div>
+                    <!-- /.container -->
+
+            </header>
+        {% endblock %}
+            
+        {% block content %}
+        {% endblock %}
+	
+	<!-- Partners scroll -->
+	<div class="container partners">
+	
+		<div class="row">
+		
+			<div id="scrollbar" class="sixteen columns">
+			  
+                            <h3 class="titulo">ESPACIO DE COWORKING</h3>
+			  
+			    <div class="viewport sixteen columns alpha omega">
+			    			  
+			        <div class="overview">
+                                    <a href="http://www.lucisfoto.com/" target="_blank" class="bwWrapper"><img src="{{ asset('bundles/arrabassada/images/lucisfotologo.jpg') }}" alt="partner-logo" /></a>
+				    <a href="http://www.creativalente.com/" target="_blank" class="bwWrapper"><img src="{{ asset('bundles/arrabassada/images/creativalentelogo.jpg') }}" alt="partner-logo" /></a>
+				    <a href="http://tiatere.es" target="_blank" class="bwWrapper"><img src="{{ asset('bundles/arrabassada/images/tiaterelogo.jpg') }}" alt="partner-logo" /></a>
+			        </div>
+			  
+			    </div>
+			    
+				<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>		
+				<!-- scrollbar -->
+				
+			</div>
+			<!-- /#scrollbar1 -->
+			
+		</div>
+		
+	</div>
+	<!-- /.container -->
+	
+	<div class="container">
+		
+		<div class="row offset-by-one">
+			
+			<div class="fourteen columns bordered">
+			
+				<ol class="breadcrumbs thirteen columns alpha">
+					<li>Te encuentras en:</li>
+					<li><a href="#">Inicio</a></li>
+				</ol>
+			
+				<a href="#" class="scroll-top">Arriba</a>
+		
+			</div>
+		
+		</div>
+		
+	</div>
+	
+	<!-- Footer >
+	<div class="footer shadded">
+		
+		<div class="container">
+			
+			<!-- Text widget block >
+			<div class="four columns offset-by-one text-widget">
+			
+				<h5>Últimos pisos actualizados</h5>
+			
+				<p>Fusce et odio id ante tincidunt sagittis vel non enim. Sed ligula ante, tristique id dictum in, dictum ac eros. Maecenas rhoncus euismod orci, vitae hendrerit leo aliquam vel. Nulla eleifend lectus sed metus consectetur.</p>
+			
+				<ul class="address">
+					<li class="location">Address 123, Country</li>
+					<li class="phone">(555) 415 5846</li>
+					<li class="email"><a href="mailto:email@luxrealestate.com">email@luxrealestate.com</a></li>
+				</ul>
+			
+			</div>
+			<!--/text widget block >
+			
+			<!-- Twitter block >
+			<div class="four columns offset-by-one">
+			
+				<h5>Tweets</h5>
+			
+				<ul class="twitter">
+					<li>Fusce et odio id ante tincidunt sagittis vel non enim. Sed ligula ante, <a href="#">http//www.yourweb.com</a></li>
+					<li>Fusce et odio id ante tincidunt sagittis vel non enim. Sed ligula ante, <a href="#">http//www.yourweb.com</a></li>
+					<li>Fusce et odio id ante tincidunt sagittis vel non enim. Sed ligula ante, <a href="#">http//www.yourweb.com</a></li>
+				</ul>
+			
+			</div>
+			<!-- /Twitter block >
+			
+			<!-- Newsletter block >
+			<div class="four columns offset-by-one small-form">
+				
+				<h5>Quieres recibir nuestras novedades</h5>
+				
+				<p class="contact-msg">Suscribite a nuestro boletin y te mando los pisos que actualicemos
+				
+				<form action="post">
+				
+					<label for="news-name">Your name</label>
+					<input type="text" id="news-name" required />
+			
+					<label for="news-email">Your email</label>
+					<input type="email" id="news-email" required />
+			
+					<input type="submit" value="Suscribe" />
+				
+				</form>
+				
+			</div>
+			<!-- /newsletter block>
+			
+		</div>
+		<!-- /.container >
+		
+	</div>
+	<!--/footer -->
+	
+	<!-- bottom -->
+	<div class="bottom">
+	
+		<div class="container">
+	
+			<div class="row offset-by-one remove-bottom">
+				
+				<nav class="ten columns">
+				
+					<ul id="sub-menu" class="nav">
+						<li><a href="{{ path('home') }}">Inicio</a></li>
+						<li><a href="buy-property-leftsidebar.html">Obra nueva</a></li>
+						<li><a href="step-1.html">Servicios</a></li>
+						<li><a href="rent-leftsidebar.html">Ofrecer una propiedad</a></li>
+						<li><a href="mortgage.html">Contacto</a></li>
+						<!--li><a href="#" class="facebook">Facebook</a></li>
+						<li><a href="#" class="twitter">Twitter</a></li-->
+						<li><a href="/admin/dashboard" class="hidden">admin</a></li>
+					</ul>
+				
+				</nav>
+				
+				<p class="four columns remove-bottom"><a href="#">Copyright</a> - <a href="#">Aviso legal</a> - <a href="http://tiatere.es">Tiatere.es</a></p>
+                                
+			
+			</div>
+			<!-- /row -->
+			
+		</div>
+		<!-- /container -->
+		<div id="logo-real-state">
+                    <img src="{{ asset('bundles/arrabassada/images/logorealstate.png') }}" alt="Sello logo real state" />
+                </div>
+	</div>
+	<!-- /bottom -->
+        
+        <!-- flashes messages -->
+        {% if app.session.hasFlash('notice') %} 
+            <div id="flashmessage" class="flash-notice"> 
+               {{ app.session.flash('notice') }} 
+            </div> 
+        {% endif %}
+	
+   {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jquery-ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/tiny-scrollbars.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jQuery.BlackAndWhite.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jquery.bxslider.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jPages.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/handlebars.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jquery.form.js') }}"></script> 
+        <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/scripts.js') }}"></script>
+    
+        <!-- Tiny scrollbars -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                            $('#scrollbar').tinyscrollbar({ 
+                                    axis: 'x'
+                            });
+
+                    });
+        </script>    
+   {% endblock %}
+	
+</body>
+</html>

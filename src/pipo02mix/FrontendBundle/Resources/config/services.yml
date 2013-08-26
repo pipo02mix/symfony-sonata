@@ -1,0 +1,50 @@
+parameters:
+
+
+services:     
+    sonata.block.service.importer:
+        class: arrabassada\FrontendBundle\Block\Service\ImporterBlockService
+        tags:
+            - { name: sonata.block }
+        arguments: [ sonata.block.service.importer, @templating ]   
+                
+    sonata.ap.admin.inmueble:
+            class: arrabassada\FrontendBundle\Admin\InmuebleAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: 'Inmuebles', label: Inmueble, label_translator_strategy: 'sonata.admin.label.strategy.underscore' }
+            arguments:
+                - null
+                - arrabassada\FrontendBundle\Entity\Inmueble
+                - FrontendBundle:Admin
+                
+    sonata.ap.admin.promocion:
+            class: arrabassada\FrontendBundle\Admin\PromocionAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: 'Inmuebles', label: Promociones, label_translator_strategy: 'sonata.admin.label.strategy.underscore' }
+            arguments:
+                - null
+                - arrabassada\FrontendBundle\Entity\Promocion
+                - FrontendBundle:Admin
+     
+    sonata.ap.admin.vivienda:
+            class: arrabassada\FrontendBundle\Admin\ViviendaAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, label_translator_strategy: 'sonata.admin.label.strategy.underscore' }
+            arguments:
+                - null
+                - arrabassada\FrontendBundle\Entity\Vivienda
+                - FrontendBundle:Admin
+                
+    sonata.ap.admin.zona:
+            class: arrabassada\FrontendBundle\Admin\ZonaAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: 'Inmuebles', label: zonas, label_translator_strategy: 'sonata.admin.label.strategy.underscore' }
+            arguments:
+                - null
+                - arrabassada\FrontendBundle\Entity\Zona
+                - FrontendBundle:Admin
+                
+    twig.extension.text:
+         class: Twig_Extensions_Extension_Text
+         tags:
+             - { name: twig.extension }

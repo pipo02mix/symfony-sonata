@@ -1,0 +1,144 @@
+<!-- Sidebar -->
+<aside class="four columns row">
+
+        <h3 class="titling">Elige tus preferencias</h3>
+
+        <form action="post" class="four columns">
+
+                <ul class="radio-list2 checks add-bottom-2">
+                        <li>
+                                <input type="checkbox" id="checker_venta" value="venta" checked>
+                                <label for="checker_venta">Venta</label>
+                        </li>
+                        <li>
+                                <input type="checkbox" id="checker_alquiler"  value="alquiler" checked>
+                                <label for="checker_alquiler">Alquiler</label>
+                        </li>
+                </ul>
+
+                <div id="slider_venta">
+                    <p>
+                            <label class="block-case"><span class="form-title">Precio Venta</span> 
+                                    <input type="text" id="price-range" />
+                            </label>
+                    </p>
+                    <div id="slider_range"></div>
+                </div>
+                <div id="slider_alquiler">
+                    <p>
+                            <label class="block-case"><span class="form-title">Precio Alquiler</span> 
+                                    <input type="text" id="price-range2" />
+                            </label>
+                    </p>
+                    <div id="slider_range2"></div>
+                </div>
+                    
+                 <div class="add-bottom-2">
+                        <label for="select-city" class="form-title">Zona</label>
+                        <ul class="checkbox-list checks add-bottom-2">
+                            {% for zona in zonas %}
+                                <li>
+                                        <input type="checkbox" id="check_zona_{{ zona.nombre }}" value="{{ zona.nombre }}" class="cheker_zona">
+                                        <label for="check_zona_{{ zona.nombre }}">{{ zona.nombre }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+                <h5 class="form-title">Tipo inmueble</h5>
+
+                <ul id="cheker_tipologia" class="radio-list prop-type add-bottom-2">
+                        <li>
+                                <input type="radio" id="prop_type_1" name="property-type" value="PISO">
+                                <label for="prop_type_1"><img src="{{ asset('bundles/arrabassada/images/icons/ico-building.png') }}" alt="ico-building" title="Piso / Apartamento" /></label>
+                        </li>
+                        <li>
+                                <input type="radio" id="prop_type_2" name="property-type" value="CASA">
+                                <label for="prop_type_2"><img src="{{ asset('bundles/arrabassada/images/icons/ico-house.png') }}" alt="ico-house"  title="Casa" /></label>
+                        </li>
+                        <li>
+                                <input type="radio" id="prop_type_3" name="property-type" value="PARKING">
+                                <label for="prop_type_3"><img src="{{ asset('bundles/arrabassada/images/icons/ico-parking.png') }}" alt="ico-parking" title="Parking" /></label>
+                        </li>
+                        <li>
+                                <input type="radio" id="prop_type_4" name="property-type" value="*">
+                                <label for="prop_type_4"><img src="{{ asset('bundles/arrabassada/images/icons/ico-star.png') }}" alt="ico-star"  title="Otros (locales, trasteros,...)" /></label>
+                        </li>
+                </ul>
+
+                <h5 class="form-title">Habitaciones y baños</h5>
+
+                <ul id="checker_rooms" class="radio-list numbers beds">
+                        <li>
+                                <input type="radio" id="beds_1" name="beds" value="1">
+                                <label for="beds_1">1</label>
+                        </li>
+                        <li>
+                                <input type="radio" id="beds_2" name="beds" value="2">
+                                <label for="beds_2">2</label>
+                        </li>
+                        <li>
+                                <input type="radio" id="beds_3" name="beds" value="3">
+                                <label for="beds_3">3</label>
+                        </li>
+                        <li>
+                                <input type="radio" id="beds_4" name="beds" value="4">
+                                <label for="beds_4">+3</label>
+                        </li>
+                </ul>
+                
+                <ul id="checker_baths" class="radio-list numbers baths">
+                        <li>
+                                <input type="radio" id="baths_1" name="baths" value="1">
+                                <label for="baths_1">1</label>
+                        </li>
+                        <li>
+                                <input type="radio" id="baths_2" name="baths" value="2">
+                                <label for="baths_2">2</label>
+                        </li>
+                        <li>
+                                <input type="radio" id="baths_3" name="baths" value="3">
+                                <label for="baths_3">3</label>
+                        </li>
+                        <li>
+                                <input type="radio" id="baths_4" name="baths" value="4">
+                                <label for="baths_4">+3</label>
+                        </li>
+                </ul>
+
+                <div class="low-cost-filter add-bottom">
+                    <a id="checker_casaensueno" href="#" class="cheker_enlace">
+                        <img src="{{ asset('bundles/arrabassada/images/casas-de-ensueno.png') }}" alt="Casa de ensueño" />
+                    </a>
+                </div>
+                <div class="casas-ensueno-filter add-bottom">
+                    <a id="checker_lowcost" href="#" class="cheker_enlace">
+                        <img src="{{ asset('bundles/arrabassada/images/lowcost.png') }}" alt="Casa de ensueño" />
+                    </a>
+                </div>
+
+        </form>		
+        
+        <hr>
+        <!-- Featured agent box -->
+        <div class="featured-agent lighted four columns">
+
+                <h4 class="half-bottom">Agente inmobiliario</h4>
+
+                <img src="{{ asset('bundles/arrabassada/images/featured-agent-avatar.jpg') }}" alt="agent" />
+
+                <h5>Alex Bonnin</h5>
+
+                <ul>
+                        <li>Oficina: 977.29.01.02</li>
+                        <li>Móvil: 685.13.90.03</li>
+                        <li>alexbonnin@arrabassada.es</li>
+                </ul>
+
+                <p class="remove-bottom">
+                    Si desean ver un inmueble contacte conmigo y gestionaré sus necesidades. Soy API colegiado, administrador de fincas y titulado en Administración y Gestión Inmobiliaria por la URV.
+                </p>
+
+        </div>
+        <!-- /.featured-agent -->
+</aside>
+<!-- /Sidebar -->	

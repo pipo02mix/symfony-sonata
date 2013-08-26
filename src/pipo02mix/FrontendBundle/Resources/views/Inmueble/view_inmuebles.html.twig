@@ -1,0 +1,310 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block header %}
+    <header class="shadded title-bar add-bottom-2">
+
+            <div class="container">
+
+                    <h1 class="offset-by-one eleven columns remove-bottom">{{ seccion }}</h1>
+                    
+                    <div class="top-address three columns">
+                            <p class="referencia">REF {{ inmueble.referencia }}</p>
+                    </div>
+                    
+                    <div class="top-address offset-by-one eleven columns remove-bottom">
+                            <p class="precio">
+                                {% if inmueble.precioAlquiler > 0 %}
+                                    Alquiler {{ inmueble.precioAlquiler | number_format(0, ',', '.') }} € &nbsp;&nbsp;
+                                {% endif %}
+                                {% if inmueble.precioVenta > 0 %}
+                                    Venta {{ inmueble.precioVenta | number_format(0, ',', '.') }} €
+                                {% endif %}
+                            </p>
+                    </div>
+
+                    <div class="top-address three columns">
+                            <a href="tel:977290102" class="telephone">977.29.01.02</a>
+                            <a href="mailto:info@arrabassada.es" class="email">info@arrabassada.es</a>
+                    </div>
+            </div>
+            <!-- /.container -->
+
+    </header>
+{% endblock %}
+
+{% block content %}
+        
+<!-- Content -->
+<div class="container">
+
+        <div class="row offset-by-one add-bottom-2">
+
+            <!-- Main Column -->
+            <section class="main on-right row">
+
+                    <div class="fourteen columns">
+
+                            <div class="single-property add-bottom-2 lighted">
+
+                                <!-- Slider Skin Four -->
+                                <div class="bxskin-four shadded add-bottom-2">
+
+                                    <ul class="bxslider">
+                                        {% for imagen in inmueble.imagenes %}
+                                            <li><a href="/uploads/inmueble_{{ inmueble.id }}/{{ imagen }}" rel="prettyPhoto[gallery1]" ><img id="preview" alt="//" src="/uploads/inmueble_{{ inmueble.id }}/{{ imagen }}" title="" /></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- /slider -->
+
+                                    <div class="row add-top">
+
+                                            <div class="one-third-liquid">
+
+                                                    <h5>{% trans %}Mapa de la ubicación{% endtrans %}</h5>
+
+                                                    <div id="mapa" class="mapa-inmueble">
+                            
+                                                    </div>
+
+                                            </div>
+
+                                            <div class="two-thirds-liquid">
+
+                                                    <h5>{% trans %}Descripción del inmueble{% endtrans %}</h5>
+
+                                                    <p class="descripcion">{{ inmueble.descripcion | trans  }}</p>
+                                                    
+                                                    <h5>{% trans %}Características del inmueble{% endtrans %}</h5>
+                                            </div>                                        
+
+                                            <div class="one-third-liquid">
+                                                <table>
+                                                    <tr>
+                                                        <th scope="row">Tipo de propiedad</th>
+                                                        <td>{{ inmueble.tipologia | trans | lower | capitalize }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Zona</th>
+                                                        <td>{{ inmueble.zona | trans | lower | capitalize }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Vistas al mar</th>
+                                                        <td>{% if inmueble.vistasMar %} Sí {% else %} No {% endif %}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Habitaciones</th>
+                                                        <td>{{ inmueble.numDormitorios | trans }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Baños</th>
+                                                        <td>{{ inmueble.numBanos | trans }}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+
+                                            <div class="one-third-liquid">
+                                                <table>
+                                                    <tr>
+                                                        <th scope="row">Superficie útil</th>
+                                                        <td>{{ inmueble.superficieUtil | trans }} m2</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Parking</th>
+                                                        <td>{% if inmueble.parking %} Sí {% else %} No {% endif %}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Trastero</th>
+                                                        <td>{% if inmueble.trastero %} Sí {% else %} No {% endif %}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Piscina</th>
+                                                        <td>{% if inmueble.piscina %} Sí {% else %} No {% endif %}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Terraza</th>
+                                                        <td>{{ inmueble.superficieTerraza | trans }} m2</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        
+
+                                    </div>
+                                
+                                    <hr>
+                                    
+                                    <div class="row add-bottom-2">
+
+                                            
+
+                                           <div class="featured-agent lighted four columns">
+
+                                                    <h4 class="half-bottom">Agente inmobiliario</h4>
+
+                                                    <img src="/bundles/arrabassada/images/featured-agent-avatar.jpg" alt="agent">
+
+                                                    <h5>Alex Bonnin</h5>
+
+                                                    <ul>
+                                                            <li>Oficina: <a href="tel:977290102">977.29.01.02</a></li>
+                                                            <li>Móvil: <a href="tel:685139003">685.13.90.03</a></li>
+                                                            <li><a href="emailto:alexbonnin@gmail.com">alexbonnin@arrabassada.es</a></li>
+                                                    </ul>
+
+                                                    <p class="remove-bottom">
+                                                        Si desean ver un inmueble contacte conmigo y gestionaré sus necesidades. Soy API colegiado, administrador de fincas y titulado en Administración y Gestión Inmobiliaria por la URV.
+                                                    </p>
+
+                                            </div>
+                                            
+                                            <div class="panel-form-view-inmueble two-third-liquid">
+                                                <h4>Visita este piso</h4>
+
+                                                <form action="{{ path('contacto_inmueble', { 'slug' : inmueble.slug }) }}" method="post">
+                                                    <input id="submit_button_view_inmueble" type="submit" value="Enviar" />
+                                                    <ul>
+                                                        <li class="five columns alpha">
+                                                                <label for="name" class="screen-reader-text">Nombre</label>
+                                                                <input type="text" placeholder="Nombre" class="full" required id="name" name="name" />
+                                                        </li>				
+                                                        <li class="four columns omega">
+                                                                <label for="email" class="screen-reader-text">E-mail</label>
+                                                                <input type="text" placeholder="Email o teléfono" class="full" required id="email" name="email" />
+                                                        </li>				
+                                                        <li class="nine columns alpha">
+                                                                <label for="message" class="screen-reader-text">Consulta</label>
+                                                                <textarea id="message" name="message" cols="30" rows="10" class="full" required placeholder="Quiero más información del inmueble"></textarea>
+                                                                <input type="text" id="checker" name="checker" />
+                                                        </li>	
+                                                    </ul>
+                                                </form>
+                                            </div>
+                                        
+                                    </div>
+
+                                    <hr>
+                                    
+                                    <div class="row add-bottom-2 third-liquid">
+                                        <h4>Inmuebles relacionados</h4>
+
+                                        <ul class="gallery row six-per-row remove-bottom" id="pager">
+                                                {% for inmuebleRelacionado in inmueblesRelacionados %}
+                                                    <li class="two columns">
+                                                            <article class="item-related-property">
+                                                                <a href="/inmueble/{{ inmuebleRelacionado.slug }}" class="link-related">
+                                                                    <figure class="mosaic-block">                                                                        
+                                                                            <img src="/uploads/inmueble_{{ inmuebleRelacionado.id }}/{{ inmuebleRelacionado.imagen_principal }}" alt="{{ inmuebleRelacionado.titulo }}" />
+                                                                    </figure>
+                                                                    <div class="tools">
+                                                                            <small class="title">{{ inmuebleRelacionado.titulo | truncate (60) }}</small>
+                                                                            <p class="price">{{ inmuebleRelacionado.precio |number_format(0, ',', '.') }} €</p>
+                                                                    </div>
+                                                                </a>
+                                                            </article>
+                                                    </li>
+                                                {% endfor %}
+                                        </ul>
+                                        <!-- /Gallery -->
+                                    </div>    
+                                    
+                                    
+                            </div>
+                            <!-- /.single-property -->
+
+                    </div>
+
+            </section>        
+        <!-- /Main Content  -->
+
+</div>
+        <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+{% endblock %}	
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('bundles/arrabassada/js/jquery.prettyPhoto.js') }}"></script>
+    
+    <!-- BX Slider Init -->
+    <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('.bxslider').bxSlider({
+                        minSlides:		3,
+                        maxSlides:		3,
+                        slideWidth:		341,
+                        slideMargin:	5,
+                        captions:		false,
+                        speed:		4000
+                });
+                
+                //placeholder polyfill
+                if (!("placeholder" in document.createElement("input"))) {
+                    $("input[type=text], input[type=email], textarea").each(function(){
+                        this.value = $(this).attr('placeholder');
+                    });
+                    $("input[type=text], input[type=email], textarea").focus(function(){
+                        if (this.value == $(this).attr('placeholder')) {
+                            this.value = '';
+                        }
+                    }).blur(function(){
+                        if (this.value == '') {
+                            this.value = $(this).attr('placeholder');
+                        }
+                    });
+                }
+                
+                $("a[rel^='prettyPhoto']").prettyPhoto({slideshow:5000, autoplay_slideshow:true});
+                
+                var map_styles = [ 
+                      {
+                        stylers: [
+                          { hue: "#00ffe6" },
+                          { saturation: -20 }
+                        ]
+                      },{
+                        featureType: "road",
+                        elementType: "geometry",
+                        stylers: [
+                          { lightness: 100 },
+                          { visibility: "simplified" }
+                        ]
+                      },{
+                        featureType: "road",
+                        elementType: "labels",
+                        stylers: [
+                          { visibility: "on" }
+                        ]
+                      }
+                ];
+                
+                {% if inmueble.coordenadas.lat > 0%}
+                var map = new google.maps.Map(
+                    document.getElementById("mapa"),
+                    {
+                        zoom: 16,
+                        center: new google.maps.LatLng({{ inmueble.coordenadas.lat }}, {{ inmueble.coordenadas.lng }}),
+                        disableDefaultUI: true,
+                        zoomControl: true,
+                        zoomControlOptions: {
+                            style: google.maps.ZoomControlStyle.SMALL
+                        },
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        draggable: !('ontouchstart' in document.documentElement),
+                        styles: map_styles
+                    }
+                );  
+                var marker = new google.maps.Marker({
+                      position: new google.maps.LatLng({{ inmueble.coordenadas.lat }}, {{ inmueble.coordenadas.lng }}),
+                      map: map,
+                      title:"{{ inmueble.titulo | truncate(15) }}"
+                  });
+                {% endif %}
+            });	
+    </script>
+{% endblock %}

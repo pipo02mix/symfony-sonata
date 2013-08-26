@@ -1,0 +1,72 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block header %}
+    <header class="shadded title-bar add-bottom-2">
+
+            <div class="container">
+
+                    <h1 class="offset-by-one eleven columns remove-bottom">Obra nueva</h1>
+                    <div class="top-address three columns">
+                            <a href="tel:977290102" class="telephone">977.29.01.02</a>
+                            <p><a href="mailto:info@arrabassada.es">info@arrabassada.es</a></p>
+                    </div>
+                    
+            </div>
+            <!-- /.container -->
+
+    </header>
+{% endblock %}
+
+{% block content %}
+ 
+
+	<!-- Content -->
+	<div class="container">
+		
+		<div class="row offset-by-one add-bottom-2">
+						
+			<!-- Main Column -->
+        <section class="main">
+
+            <div class="fourteen columns">
+
+                            <!-- Gallery -->	
+                            <ul class="gallery full row" id="pager">
+
+                                {% for promocion in promociones %}
+                                    <li class="fourteen columns">
+                                            <article>
+                                                    <figure class="mosaic-block">
+                                                        <a href="{{ path('view_obra_nueva', { 'slug': promocion.slug }) }}">
+                                                            <img src="/uploads/promocion_{{ promocion.id }}/{{ promocion.imagenPrincipal }}" alt="{{ promocion.titulo }}" class="imagen-promocion-nueva" />
+                                                        </a>
+                                                    </figure>
+                                                    <aside>
+                                                            <div class="project">
+                                                                    <h4>{{ promocion.titulo }}</h4>
+                                                                    <p>{{ promocion.eslogan }}</p>
+                                                                    <p>{{ promocion.descripcion | truncate(40) }}</p>
+                                                                    <ul class="project-details">
+                                                                            <li class="location">{{ promocion.direccion }}</li>
+                                                                            <li class="calendar">{{ promocion.zona }}</li>
+                                                                    </ul>
+                                                                    <a href="{{ path('view_obra_nueva', { 'slug': promocion.slug }) }}" class="view button big remove-bottom">Más información</a>
+                                                            </div>
+                                                    </aside>
+                                            </article>
+                                    </li>
+                                {% endfor %}    
+                            </ul>
+                            <!-- /Gallery -->
+
+                    </div>
+
+            </section>
+            <!-- /Main Content  -->		 
+
+        </div>
+        <!-- /.row -->
+
+</div>
+<!-- /.container -->
+{% endblock %}	

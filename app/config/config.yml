@@ -1,0 +1,190 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: "%kernel.debug%"
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
+    trusted_proxies: ~
+    session:         ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        
+      - CmsBundle
+      - FrontendBundle
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataUserBundle: ~
+                    ApplicationSonataNewsBundle: ~
+                    ApplicationSonataMediaBundle: ~
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
+                    SonataNewsBundle: ~
+                    SonataMediaBundle: ~
+                    CmsBundle: ~
+                    FrontendBundle: ~
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User
+    group:
+        group_class:  Application\Sonata\UserBundle\Entity\Group
+
+    profile:  # Authentication Form
+        form:
+            type:               fos_user_profile
+            name:               fos_user_profile_form
+            validation_groups:  [Authentication] 
+
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+            
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.rss:
+        sonata.block.service.importer:
+
+sonata_admin:
+    title:      Arrabassda Admin
+    title_logo: /bundles/sonataadmin/logo_title.png
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+    dashboard:
+        blocks:
+            # display a dashboard block
+            #- { position: left, type: sonata.admin.block.admin_list }     
+            #- { position: right, type: sonata.block.service.importer }  
+            
+sonata_news:
+    title:        Sonata Project
+    link:         http://sonata-project.org
+    description:  Cool bundles on top of Symfony2
+    salt:         'secureToken'
+    permalink_generator: sonata.news.permalink.date # sonata.news.permalink.category
+
+    comment:
+        notification:
+            emails:   [email@example.org, email2@example.org]
+            from:     no-reply@sonata-project.org
+            template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
+            
+sonata_media:
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false           
+        
+sonata_doctrine_orm_admin:
+    # default value is null, so doctrine uses the value defined in the configuration
+    entity_manager: ~  
+    templates:
+        types:
+            list:
+                imagen_icono:      FrontendBundle:Admin:CRUD/list_imagen_icono.html.twig
+    
+sonata_formatter:
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig    

@@ -1,0 +1,22 @@
+
+<td class="sonata-ba-list-field sonata-ba-list-field-{{ field_description.type }}" objectId="{{ admin.id(object) }}">
+    {% if
+            field_description.options.identifier is defined
+        and field_description.options.route is defined
+        and admin.isGranted(field_description.options.route.name == 'show' ? 'VIEW' : field_description.options.route.name|upper, object)
+        and admin.hasRoute(field_description.options.route.name)
+    %}
+        <a href="{{ admin.generateObjectUrl(field_description.options.route.name, object, field_description.options.route.parameters) }}">
+            
+            {%- block field %}
+                {% if object.imagenPrincipal %}
+                    <img src="/uploads/{{ object.namespace }}_{{ admin.id(object) }}/{{ value }}" style="max-height: 148px;" />
+                {% else %}
+                    <img src="{{ value }}"  class="imagen_admin_list" />
+                {% endif %}
+            {% endblock -%}
+        </a>
+    {% else %}
+        {{ block('field') }}
+    {% endif %}
+</td>

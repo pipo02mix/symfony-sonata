@@ -1,0 +1,105 @@
+{% extends 'FrontendBundle::layout.html.twig' %}
+
+{% block header %}
+    <header class="shadded title-bar add-bottom-2">
+
+            <div class="container">
+
+                    <h1 class="offset-by-one eleven columns remove-bottom">Contacto</h1>
+                    <div class="top-address three columns">
+                            <a href="tel:977290102" class="telephone">977.29.01.02</a>
+                            <p><a href="mailto:info@arrabassada.es">info@arrabassada.es</a></p>
+                    </div>
+                    
+            </div>
+            <!-- /.container -->
+
+    </header>
+{% endblock %}
+
+{% block content %}
+
+	<!-- Content -->
+	<div class="container">
+		
+		<div class="row offset-by-one add-bottom-2">
+						
+			<!-- Main Column -->
+            <section class="main on-left row">
+
+                    <h4 class="titling">Formulario de contacto</h4>
+
+                    <div class="nine columns">
+
+                            <div class="lighted form-holder">
+
+                                    <h5 class="small-title email-icon">Mandanos tu consulta</h5>
+
+                                    <form action="post" class="remove-bottom">
+
+                                            <ul class="row">
+                                                    <li class="three columns alpha">
+                                                            <label for="name" class="screen-reader-text">Nombre</label>
+                                                            <input type="text" placeholder="Nombre" class="full" required id="name" />
+                                                    </li>				
+                                                    <li class="three columns alpha">
+                                                            <label for="email" class="screen-reader-text">E-mail</label>
+                                                            <input type="email" placeholder="Email" class="full" required id="email" />
+                                                    </li>				
+                                                    <li class="two columns omega">
+                                                            <label for="telephone" class="screen-reader-text">Telefono</label>
+                                                            <input type="text" placeholder="Telefono" class="full" required id="telephone" />
+                                                    </li>				
+                                                    <li class="eight columns alpha">
+                                                            <label for="message" class="screen-reader-text">Consulta</label>
+                                                            <textarea id="message" cols="30" rows="10" class="full"></textarea>
+                                                    </li>				
+                                                    <li class="eight columns omega">
+                                                            <input type="submit" value="Enviar" />
+                                                    </li>
+                                            </ul>
+
+                                    </form>
+
+                            </div>
+
+                    </div>
+
+            </section>
+                <!-- /Main Content  -->
+
+                 <!-- Sidebar -->
+            <aside class="on-right row">
+
+                    <h4 class="titling">Contact Information</h4>
+
+                    <div class="aside-block">
+
+                            <iframe width="100%" height="210" class="add-bottom" scrolling="no" src="http://maps.google.es/maps?q=arrabassada+immobiliaria&ie=UTF8&hl=es&cid…707676629014&ll=41.123203,1.274157&spn=0.009698,0.017166&z=14&output=embed"></iframe>
+
+
+                            <h5>Arrabassada Immobiliaria</h5>
+
+                            <ul class="address">
+                                    <li class="location">Narcís Oller 1 bajo, Tarragona</li>
+                                    <li class="phone">977.29.01.02</li>
+                                    <li class="email"><a href="mailto:info@arrabassada.es">info@arrabassada.es</a></li>
+                            </ul>
+
+                    </div>
+                    <!-- /.aside-block -->
+
+            </aside>
+            <!-- /Sidebar -->		
+
+        <!-- /.row -->	
+                
+        </div>
+        <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+           
+{% endblock %}	
